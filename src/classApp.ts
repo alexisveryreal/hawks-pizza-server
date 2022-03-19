@@ -7,6 +7,7 @@ import { NODE_ENV, PORT } from '@config';
 import { Routes } from '@interfaces/routes.interface';
 import { set, connect } from 'mongoose';
 import { dbConnection } from '@databases';
+import errorMiddleware from '@middlewares/error.middleware';
 
 class App {
   public app: express.Application;
@@ -25,6 +26,7 @@ class App {
     // init routes
     this.initalizeRoutes(routes);
     // inti error handling
+    this.initializeErrorHandling();
   }
 
   public listen() {
@@ -55,6 +57,10 @@ class App {
     routes.forEach(route => {
       this.app.use('/', route.router);
     });
+  }
+
+  private initializeErrorHandling() {
+    this.app.use(errorMiddleware);
   }
 }
 
