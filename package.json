@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "swc src -d dist",
     "build-dev": "npm run build && SET NODE_ENV=development node --inspect dist/index.js",
+    "build:swc": "swc src -d dist --source-maps --copy-files",
     "dev": "nodemon --ext ts --exec \"npm run build-dev\"",
     "start": "node dist/index.js"
   },

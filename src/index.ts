@@ -1,15 +1,6 @@
-import express from 'express';
+import App from '@/classApp';
+import IndexRoute from '@routes/index.route';
 
-const PORT = process.env.PORT || 3000;
-const app = express();
+const app = new App([new IndexRoute()]);
 
-app.use(express.raw({ type: 'application/vnd.custom-type' }));
-app.use(express.text({ type: 'text/html' }));
-
-app.get('/test', (req, res) => {
-  res.status(200).send('Hello World');
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.listen();
