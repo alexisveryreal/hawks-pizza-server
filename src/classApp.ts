@@ -5,6 +5,8 @@ import helmet from 'helmet';
 import express from 'express';
 import { NODE_ENV, PORT } from '@config';
 import { Routes } from '@interfaces/routes.interface';
+import { set, connect } from 'mongoose';
+import { dbConnection } from '@databases';
 
 class App {
   public app: express.Application;
@@ -17,6 +19,7 @@ class App {
     this.port = PORT || 3000;
 
     // init db
+    this.connectToDatabase();
     // init middle
     this.initializeMiddlewares();
     // init routes
@@ -31,6 +34,13 @@ class App {
       console.log(`🚀 App listening on the port ${this.port}`);
       console.log(`=================================`);
     });
+  }
+
+  private connectToDatabase() {
+    if (this.env !== 'production') {
+      set('debug', true);
+    }
+    connect(dbConnection.url, dbConnection.options);
   }
 
   private initializeMiddlewares() {
