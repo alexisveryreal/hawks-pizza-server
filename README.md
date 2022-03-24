@@ -14,7 +14,7 @@
 
 <br>
 <p align="center">
-  <a href="https://github.com/alexisveryreal"><img width="500" src="./images/logo.png" alt="Hawks Pizza Server Logo"></a>
+  <a href="https://github.com/alexisveryreal"><img width="200" src="./images/logo.png" alt="Hawks Pizza Server Logo"></a>
 </p>
 <br>
 
@@ -44,9 +44,6 @@ npm run start
 * Github: [@alexisveryreal](https://github.com/alexisveryreal)
 * LinkedIn: [@alexis-n-v](https://linkedin.com/in/alexis-n-v)
 
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/alexisveryreal/hawks-pizza-server-2/issues). You can also take a look at the [contributing guide](https://github.com/alexisveryreal/hawks-pizza-server-2/blob/master/CONTRIBUTING.md).
 
 ## Show your support
 
