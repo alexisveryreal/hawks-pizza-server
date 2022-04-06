@@ -1,0 +1,126 @@
+tags:
+- name: profiles
+  description: profiles API
+
+paths:
+# [GET] profiles
+  /profiles:
+    get:
+      tags:
+      - profiles
+      summary: Find All Profiles
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+
+# [POST] profiles
+    post:
+      tags:
+      - profiles
+      summary: Add Profile
+      parameters:
+      - name: body
+        in: body
+        description: profile Data
+        required: true
+        schema:
+          $ref: '#/definitions/profiles'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] profiles/id
+  /profiles/{id}:
+    get:
+      tags:
+      - profiles
+      summary: Find Profile By Id
+      parameters:
+      - name: id
+        in: path
+        description: Profile Id
+        required: true
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [PUT] profiles/id
+    put:
+      tags:
+      - profiles
+      summary: Update Profile By Id
+      parameters:
+      - name: id
+        in: path
+        description: profile Id
+        required: true
+      - name: body
+        in: body
+        description: profile Data
+        required: true
+        schema:
+          $ref: '#/definitions/profiles'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [DELETE] profiles/id
+    delete:
+      tags:
+      - profiles
+      summary: Delete Profile By Id
+      parameters:
+      - name: id
+        in: path
+        description: profile Id
+        required: true
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# definitions
+definitions:
+  profiles:
+    type: object
+    required:
+        - email
+        - username
+        - gender
+    properties:
+      id:
+        description: profile Id
+      email:
+        type: string
+        description: profile Email
+      username:
+        type: string
+        description: profile Username
+      gender:
+        type: string
+        description: profile Gender
+
+schemes:
+ - https
+ - http

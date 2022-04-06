@@ -8,6 +8,8 @@ import { Routes } from '@interfaces/routes.interface';
 import { set, connect } from 'mongoose';
 import { dbConnection } from '@databases';
 import errorMiddleware from '@middlewares/error.middleware';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
 class App {
   public app: express.Application;
@@ -19,13 +21,11 @@ class App {
     this.env = NODE_ENV || 'development';
     this.port = PORT || 3000;
 
-    // init db
     this.connectToDatabase();
-    // init middle
     this.initializeMiddlewares();
-    // init routes
     this.initalizeRoutes(routes);
-    // inti error handling
+    // swagger
+    this.initializeSwagger();
     this.initializeErrorHandling();
   }
 
@@ -57,6 +57,22 @@ class App {
     routes.forEach(route => {
       this.app.use('/', route.router);
     });
+  }
+
+  private initializeSwagger() {
+    const options = {
+      swaggerDefinition: {
+        info: {
+          title: 'HAWKS PIZZA REST API',
+          version: '1.0.0',
+          description: 'Docs for API',
+        },
+      },
+      apis: ['swagger.yaml'],
+    };
+
+    const specs = swaggerJSDoc(options);
+    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
   }
 
   private initializeErrorHandling() {
