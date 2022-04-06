@@ -30,6 +30,10 @@ npm run build
 npm run start
 ```
 
+## Documentation
+* Visit the [API-Docs](https://hawks-api.alexisveryreal.com/api-docs/)
+* To test and see how the API should be called
+
 ## Author
 
 👤 **Alexis Villarreal**
