@@ -109,8 +109,6 @@ definitions:
         - username
         - gender
     properties:
-      id:
-        description: profile Id
       email:
         type: string
         description: profile Email
